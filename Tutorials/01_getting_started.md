@@ -44,3 +44,6 @@ npx umi g page posts --typescript
 
 // Add a new file: src/components/PostList.tsx 
 ```
+
+If you get an error with windows when webpacking: **Module parse failed: Unexpected token (16:29)**
+MAKE SURE the file path not on c: or not under a hardlink.
