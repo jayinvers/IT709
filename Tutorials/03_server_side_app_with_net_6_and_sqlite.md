@@ -14,6 +14,7 @@ This doc teaches creating an ASP.NET Core MVC Web App with controllers and views
 ## 2. Prerequisites
 
 - Visual Studio 2022
+- Bootstrap
 - SQLite Administrator
 
 ## 3. Create a new project
@@ -128,7 +129,30 @@ Now, let's start creating the new View file for the controller ContactController
         <p>If you have questions, feel free to send an email to me. maxazure@gmail.com</p>
     </div>
   ```
+
+- Append following html to Views/Shared/_Layout.cshtml
   
+  ```html
+  <li class="nav-item">
+     <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
+  </li>
+  ```
+
+  ![add contact to nav](../pic/03_server_side_app_with_net_6_and_sqlite/14-add-contact-to-nav.png)
+
+### Self Work
+
+Try to modify the **Privacy** page to **About**, and fill in some text as the content.
+
+List of files that need to be modified:
+
+- HomeController.cs
+- _Layout.cshtml
+- Privacy.cshtml
+
+See the result:
+
+![result of about page](../pic/03_server_side_app_with_net_6_and_sqlite/15-result-of-about.png)
 
 
 
