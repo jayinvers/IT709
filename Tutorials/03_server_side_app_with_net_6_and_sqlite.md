@@ -4,6 +4,8 @@
 
 This doc teaches creating an ASP.NET Core MVC Web App with controllers and views. We will have an app that displays a personal CV.
 
+To see the prototype, please click [Prototype of MyWebSite Project](../Prototypes/MyWebSite/README.md)
+
 **Objectives:**
 
 - Create a web app with Visual Studio 2022
@@ -21,11 +23,32 @@ This doc teaches creating an ASP.NET Core MVC Web App with controllers and views
 
 - Start Visual Studio and choose **Create a New Project**
 - Select **ASP.NET Core Web App (Model-View-Controller)** and **Next**
-- Project name: *MyWebSite*（name should be Camel-Case）and **Next**
+- Project name: *MyWebSite*（name should be Pascal Case）and **Next**
 - Framework: **.NET 6.0 (long-term support)** and check **Enable Docker**
 - Create
 
+**NOTE**: Four common naming styles.
+
+```bash
+camelCase
+PascalCase
+snake_case
+kebab-case
+```
+
 ![Additional information](../pic/03_server_side_app_with_net_6_and_sqlite/01-create-a-project.png)
+
+- Click menu **Debug** or **Docker** and choose **MyWebSite Debug Properties**
+
+![click Docker](../pic/03_server_side_app_with_net_6_and_sqlite/02-1-set-port.png)
+
+- To specify the port, copy following code to **App URL**
+
+```bash
+https://localhost:7177;http://localhost:5177
+```
+
+![set port](../pic/03_server_side_app_with_net_6_and_sqlite/02-2-set-port.png)
 
 - Change Run Mode from **Docker** to **MyWebSite** and **Run (F5)**
 
@@ -99,7 +122,7 @@ This section will build the controller for the **Contact** page.
 
 ## 5. Add a view
 
-When we access *https://localhost:7177/contact*, will got an unhandled exception. Because we did not assign a view file(\*\.cshtml) to acthion *Index()*
+If we now try to access *https://localhost:7177/contact*, we will get an unhandled exception. Because we did not assign a view file(\*\.cshtml) to action *Index()*
 
 ![the unhandled exception](../pic/03_server_side_app_with_net_6_and_sqlite/11-an-unhandled-exception-without-view-file.png)
 
@@ -117,7 +140,7 @@ Now, let's start creating the new View file for the controller ContactController
   
   ![add a view](../pic/03_server_side_app_with_net_6_and_sqlite/13-add-view.png)
 
-- Replacing following code to **index.cshtml**
+- Replace the contents *index.cshtml* with the following code
 
   ```cshtml
     @{
@@ -130,7 +153,9 @@ Now, let's start creating the new View file for the controller ContactController
     </div>
   ```
 
-- Append following html to Views/Shared/_Layout.cshtml
+## Change views and layout pages
+
+- Append following html code to the links section after **Home** in Views/Shared/_Layout.cshtml
   
   ```html
   <li class="nav-item">
@@ -140,7 +165,23 @@ Now, let's start creating the new View file for the controller ContactController
 
   ![add contact to nav](../pic/03_server_side_app_with_net_6_and_sqlite/14-add-contact-to-nav.png)
 
-### Self Work
+  Layout templates allow:
+
+  - Specifying the HTML container layout of a site in one place.
+
+  - Applying the HTML container layout across multiple pages in the site.
+
+### Examine the Views/_ViewStart.cshtml file
+
+```cshtml
+@{
+    Layout = "_Layout";
+}
+```
+
+The *Views/_ViewStart.cshtml* file brings in the *Views/Shared/_Layout.cshtml* file to each view. The *Layout* property can be used to set a different layout view, or set it to *null* so no layout file will be used.
+
+## Try these yourself
 
 Try to modify the **Privacy** page to **About**, and fill in some text as the content.
 
@@ -150,22 +191,79 @@ List of files that need to be modified:
 - _Layout.cshtml
 - Privacy.cshtml
 
-See the result:
+The result should be similar to the image below:
 
 ![result of about page](../pic/03_server_side_app_with_net_6_and_sqlite/15-result-of-about.png)
 
+## 6. Add a model
 
+Next, We are going to add classes for page *Experience*. these classes are the **MODEL** part of **M**VC app.
 
+These model classes are used with [Entity Framework Core (EF Core)](https://docs.microsoft.com/en-us/ef/core/) to work with a database. EF Core is an object-relational mapping (ORM) framework that simplifies the data access code that you have to write.
 
+The model classes created are known as **POCO** classes, from **P**lain **O**ld **C**LR **O**bjects. POCO classes don't have any dependency on EF Core. They only define the properties of the data to be stored in the database.
 
+In this section, model classes are created first, and EF Core creates the database.
 
+## Add a data model class
 
+- Right-click the Models folder > **Add** > **Class**. Name the file *Experience.cs*.
 
+- Update the Models/Experience.cs file with the following code:
 
+```cs
+using System.ComponentModel.DataAnnotations;
 
+namespace MyWebSite.Models
+{
+    public class Experience
+    {
+        public int Id { get; set; }
+        public string? Title { get; set; }
+        public string? Location { get; set; }
+        public string? Duration { get; set; }
+        public string? description { get; set; }
 
-### update EF-tools
+        [DataType(DataType.Date)]
+        public DateTime CreateAt { get; set; }
+    }
+}
+```
 
-```bash
+The *Experience* class contains an **Id** field, which is required by the database for the primary key.
+
+The DataType attribute on CreateAt specifies the type of the data (**Date**). With this attribute:
+
+The user isn't required to enter time information in the date field.
+Only the date is displayed, not time information.
+
+[DataAnnotations](https://docs.microsoft.com/en-us/dotnet/api/system.componentmodel.dataannotations?view=net-6.0) are covered in a later tutorial.
+
+The question mark after **string** indicates that the property is nullable. For more information, see [Nullable reference types](https://docs.microsoft.com/en-us/dotnet/csharp/nullable-references).
+
+## Add NuGet packages
+
+- From the Tools menu, select NuGet Package Manager > Package Manager Console (PMC).
+
+  ![Add NuGet packages](../pic/03_server_side_app_with_net_6_and_sqlite/16-add-nuget-packages.png)
+
+```powershell
+Install-Package Microsoft.EntityFrameworkCore.Design
+Install-Package Microsoft.EntityFrameworkCore.Sqlite
+```
+
+### NOTE: Update EF-tools if your EF-tools is out of date
+
+```powershell
 dotnet tool update --global dotnet-ef
 ```
+
+Build the project as a check for compiler errors.
+
+## Scaffold Experience pages
+
+Use the scaffolding tool to produce Create, Read, Update, and Delete (CRUD) pages for the Experience model.
+
+- In Solution Explorer, right-click the Controllers folder and select **Add** > **New Scaffolded Item**.
+  
+- In the Add Scaffold dialog, select MVC Controller with views, using Entity Framework > Add.
