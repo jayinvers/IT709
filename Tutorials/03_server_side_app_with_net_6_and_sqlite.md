@@ -2,7 +2,7 @@
 
 ## 1. Intro
 
-This doc teaches creating an ASP.NET Core MVC Web App with controllers and views. We will have an app that displays products.
+This doc teaches creating an ASP.NET Core MVC Web App with controllers and views. We will have an app that displays a personal CV.
 
 **Objectives:**
 
@@ -75,6 +75,70 @@ This section will build the controller for the **Contact** page.
 
 - Run and Go to *https://localhost:7177/contact/test*
   ![contact-test](../pic/03_server_side_app_with_net_6_and_sqlite/08-contact-test.png)
+
+- Customize Path for an action (*Contact/test*)
+  
+  We want to change *https://localhost:7177/contact/test* to *https://localhost:7177/contact-test*
+
+  Copy following code replace test() method
+
+  ```cs
+        [Route("/contact-test")]
+        public string test()
+        {
+            return "test";
+        }
+  ```
+
+  ![Contact Controller](../pic/03_server_side_app_with_net_6_and_sqlite/09-contact-controller.png)
+
+  **Run** and go to *<https://localhost:7177/contact-test>*
+
+  ![result of customize an action](../pic/03_server_side_app_with_net_6_and_sqlite/10-result-customize-action.png)
+
+## 5. Add a view
+
+When we access *https://localhost:7177/contact*, will got an unhandled exception. Because we did not assign a view file(\*\.cshtml) to acthion *Index()*
+
+![the unhandled exception](../pic/03_server_side_app_with_net_6_and_sqlite/11-an-unhandled-exception-without-view-file.png)
+
+Now, let's start creating the new View file for the controller ContactController.
+
+### Add a view file for action *Index()*
+
+- Right-click **Views** > **Add** > **New Folder**
+
+  Folder name: **Contact**
+  
+  ![create a folder for contact view](../pic/03_server_side_app_with_net_6_and_sqlite/12-create-a-folder-for-contact-view.png)
+
+- Right-click **Contact** > **Add** > **View**
+  
+  ![add a view](../pic/03_server_side_app_with_net_6_and_sqlite/13-add-view.png)
+
+- Replacing following code to **index.cshtml**
+
+  ```cshtml
+    @{
+        ViewData["Title"] = "Contact Me";
+    }
+
+    <div class="text-center">
+        <h1 class="display-4">Contact</h1>
+        <p>If you have questions, feel free to send an email to me. maxazure@gmail.com</p>
+    </div>
+  ```
+  
+
+
+
+
+
+
+
+
+
+
 
 ### update EF-tools
 
