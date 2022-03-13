@@ -365,10 +365,9 @@ By default, scaffolding will automatically create a local SQL Server database. I
   "ConnectionStrings": {
     "MyWebSiteContext": "Server=(localdb)\\mssqllocaldb;Database=MyWebSiteContext-4a237323-5d44-429f-9e73-50ff340e8428;Trusted_Connection=True;MultipleActiveResultSets=true",
     "MyWebSiteContextSqlite": "Data Source=MyWebSite.db"
+   }
   }
-}
   ```
-
 
 ## Decorate the temple
 
