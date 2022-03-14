@@ -1,4 +1,4 @@
-# Server-side App with .Net 6 and Sqlite
+# Foreground App with .Net 6 MVC architecture and Sql Server/Sqlite
 
 ## 1. Intro
 
@@ -333,6 +333,7 @@ Use the EF Core Migrations feature to create the database. Migrations is a set o
 By default, scaffolding will automatically create a local SQL Server database. If you want to change to another database, such as SQLite. You can do as follows:
 
 - Open file **Program.cs**, replace code
+  
   ```cs
   builder.Services.AddDbContext<MyWebSiteContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MyWebSiteContext")));
@@ -345,13 +346,20 @@ By default, scaffolding will automatically create a local SQL Server database. I
     options.UseSqlite(builder.Configuration.GetConnectionString("MyWebSiteContextSqlite")));
   ```
 
+  For MySql
+
+  ```cs
+  builder.Services.AddDbContext<MyWebSiteContext>(options =>
+    options.UseMySql(builder.Configuration.GetConnectionString("MyWebSiteContextMySQL"), new MySqlServerVersion(new Version(8, 0, 22))));
+  ```
+
 - Append following code to appsettings.json
   
   ```json
   "MyWebSiteContextSqlite": "Data Source=MyWebSite.db"
   ```
 
-  appsetting.json should be
+  *appsetting.json* should be
 
   ```json
   {
@@ -364,7 +372,8 @@ By default, scaffolding will automatically create a local SQL Server database. I
   "AllowedHosts": "*",
   "ConnectionStrings": {
     "MyWebSiteContext": "Server=(localdb)\\mssqllocaldb;Database=MyWebSiteContext-4a237323-5d44-429f-9e73-50ff340e8428;Trusted_Connection=True;MultipleActiveResultSets=true",
-    "MyWebSiteContextSqlite": "Data Source=MyWebSite.db"
+    "MyWebSiteContextSqlite": "Data Source=MyWebSite.db",
+    "MyWebSiteContextMySQL": "server=192.168.31.143;port=3306;database=db;uid=user;password=xxxxxx"
    }
   }
   ```

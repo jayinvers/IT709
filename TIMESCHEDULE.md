@@ -19,4 +19,4 @@
 | 14 | Project | Final Exam |
 | 15 | Project | Project |  |
 | 16 | Revision | Labs Due |  |
-| 17 | Project | Project 2 Due |  |
+| 17 | Project | Project | Project 2 Due |
