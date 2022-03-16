@@ -21,10 +21,11 @@ npm install --global yarn
 Copy and paste following code to your Powershell
 
 ```powershell
-[environment]::SetEnvironmentvariable("PATH", "$([environment]::GetEnvironmentvariable("Path", "User"));%USERPROFILE%\AppData\Roaming\npm", "User")
+[environment]::SetEnvironmentvariable("PATH", "", "User")
+[environment]::SetEnvironmentvariable("PATH", "$([environment]::GetEnvironmentvariable("Path", "User"));$env:USERPROFILE\AppData\Roaming\npm", "User")
 ```
 
-Note: 
+Note:
     if you got an error with "**cannot be loaded because running scripts is disabled on this system**"
 
 ```bash
