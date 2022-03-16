@@ -548,3 +548,38 @@ Next, let's take a look at Bootstrap's built-in styles for layout.
 
 - Grid System
 ![Grid System](../pic/03_server_side_app_with_net_6_and_sqlite/23-grid-system.png)
+
+## 7.3 Work on a Single-page ABOUT without scaffold
+
+```cshtml
+@{
+    ViewData["Title"] = "Jay Liu";
+    ViewData["Banner"] = "About";
+}
+
+<div class="article">
+    <h1 class="text-center">@ViewData["Title"]</h1>
+    <h3 class="text-center">Software Engineer</h3>
+    <p>Over a 15-year long career in software development I have built and launched more than 30 projects. Since graduating from University, I have worked at tech companies in China and progressed from a junior to senior engineer. This ultimately lead to my being appointed to a position as head of engineering at a software company in Beijing. I can solve complex practical problems by designing software systems, such as developing online shopping malls and management panels, or enterprise information management systems (ERP, CRM). In addition, I am also good at full-stack development.</p>
+</div>
+```
+
+### Using Partial to organize your code
+
+```cshtml
+<partial name="_Nav" />
+```
+
+_Nav.cshtml
+
+```cshtml
+@{
+}
+<p>hello nav</p>
+
+```
+
+## Try it yourself
+
+- Get data from JSON and Rander to cshtml
+- Get data from database Rander to cshtml
