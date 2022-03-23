@@ -252,8 +252,7 @@ See the result.
 
 ## Try it yourself
 
-- Design rest of Home page with Bootstrap
+- Design rest of **Home** page with Bootstrap
 - Add new list section in Home (Portfolio)
 - Read data in SeedData.cs form MarkDown files.
 
- 
