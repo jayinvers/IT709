@@ -443,7 +443,7 @@ namespace MyWebSite.Controllers
 
 Think about how to design a pagination by using SQL
 
-We have following important Variable
+ - **We have following important Variable**
 
 ```cs
 // params
@@ -452,7 +452,7 @@ PageSize = 10
 //-------------
 TotalItems = 122
 TotalPages = (TotalItems + PageSize - 1) / PageSize
-Offset = PageCurrent * PageSize
+Position = PageCurrent * PageSize
 
 ```
 
@@ -466,3 +466,54 @@ var nextPage = context.Posts
     .Take(10)
     .ToList();
 ```
+
+- Code of AdminController.cs
+  
+  **Note that** I wrote a piece of junk for ease of understanding. We will refactor the code in future lessons. **Never** write code like this in your **real project! ! !**
+
+```cs
+        public async Task<IActionResult> Messages(int page=1)
+        {
+            int pageIndex = page;
+            int pageSize = 2;
+
+            IQueryable<Message> messageIQ = from m in _context.Message select m;
+            messageIQ = messageIQ.OrderByDescending(m => m.Id);
+
+            int count = await messageIQ.CountAsync();
+            int totalPages = (int)Math.Ceiling(count / (double)pageSize);
+
+            messageIQ = messageIQ.Skip((pageIndex-1)*pageSize).Take(pageSize);
+
+            ViewData["PaginationTotalPage"] = totalPages;
+            ViewData["PaginationIndex"] = pageIndex;
+
+            return View(await messageIQ.AsNoTracking().ToListAsync());
+        }
+```
+
+## Try it yourself
+
+Consider how to implement this pagination action in the view.
+
+## 8. Deployment with docker
+
+**Make sure** you have installed Docker for windows.
+
+- Selecting the Debug mode to Docker
+  
+  ![debug with docker](../pic/05_webfrom_admin_panel/11-debug-with-docker.png)
+
+- Click MyWebSite Debug Properties
+  ![debug properties](../pic/05_webfrom_admin_panel/12-debug-properties-docker.png)
+  
+  ![setup docker volume](../pic/05_webfrom_admin_panel/13-setup-docker-volume.png)
+
+  The path should be
+
+  ```bash
+  # -v [your project dir]\MyWebSite\db:/app/db
+  -v D:\projects\IT709\demo\MyWebSite\MyWebSite\db:/app/db
+  ```
+
+- Run the project with Docker
