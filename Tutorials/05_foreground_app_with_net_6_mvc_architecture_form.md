@@ -437,3 +437,32 @@ namespace MyWebSite.Controllers
 ```
 
 ![order by desc](../pic/05_webfrom_admin_panel/10-orderby-desc.png)
+
+
+## 7. Pagination
+
+Think about how to design a pagination by using SQL
+
+We have following important Variable
+
+```cs
+// params
+PageCurrent = 2
+PageSize = 10
+//-------------
+TotalItems = 122
+TotalPages = (TotalItems + PageSize - 1) / PageSize
+Offset = PageCurrent * PageSize
+
+```
+
+- pagination code (Example)
+
+```cs
+var position = 20;
+var nextPage = context.Posts
+    .OrderBy(b => b.PostId)
+    .Skip(position)
+    .Take(10)
+    .ToList();
+```
