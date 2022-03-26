@@ -25,6 +25,61 @@ We plan to design two tabs to identify messages before and after processing. All
 
 ## 4. Fake data generatior
 
+- open Manage NuGet Packages for Solution
+  ![Manage NuGet Packages](../pic/06_code_refactoring_pagination/02-manage-nuget-packages.png)
+
+- Install **Bogus** NuGet Packages
+  ![install bogus](../pic/06_code_refactoring_pagination/03-install-bogus.png)
+
+```cs{1,3,8-12}
+#nullable disable
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using MyWebSite.Data;
+using MyWebSite.Models;
+
+namespace MyWebSite.Controllers
+{
+   /* [Route("/admin/[controller]/[action]")] */
+    public class AdminController : Controller
+    {
+        private readonly MyWebSiteContext _context;
+
+        public AdminController(MyWebSiteContext context)
+        {
+            _context = context;
+        }
+
+        // GET: Admin/Messages
+        public async Task<IActionResult> Messages(int page=1)
+        {
+            int pageIndex = page;
+            int pageSize = 10;
+
+            IQueryable<Message> messageIQ = from m in _context.Message select m;
+            messageIQ = messageIQ.OrderByDescending(m => m.CreatedAt);
+
+            int count = await messageIQ.CountAsync();
+            int totalPages = (int)Math.Ceiling(count / (double)pageSize);
+
+            messageIQ = messageIQ.Skip((pageIndex-1)*pageSize).Take(pageSize);
+
+            ViewData["PaginationTotalPage"] = totalPages;
+            ViewData["PaginationIndex"] = pageIndex;
+
+            return View(await messageIQ.AsNoTracking().ToListAsync());
+        }
+
+    }
+}
+
+```
+
 ## 5. Coding with pagination
 
 ## 6. Code Refactor
