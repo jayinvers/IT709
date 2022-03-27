@@ -7,7 +7,6 @@
 ## Work Sheets
 
 1. [Preparation](Tutorials/00_preparation)
-
 2. [Getting Started (Week 4)](Tutorials/01_getting_started)
 3. [Front-end App with React and Ant Design Pro(Week 4)](Tutorials/02_frontend_with_react_antd_pro)
 4. [Foreground App with .Net 6.0 MVC architecture and Sql Server/Sqlite(Week 5)](Tutorials/03_foreground_app_with_net_6_mvc_architecture_and_sql_server_sqlite)
