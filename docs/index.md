@@ -1,37 +1,11 @@
 # IT709 Web Application
 
-You can use the [editor on GitHub](https://github.com/jayinvers/IT709/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
+- [Time Schedule](TIMESCHEDULE.md)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/jayinvers/IT709/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+- [00 Preparation](https://github.com/jayinvers/IT709/blob/main/Tutorials/00_preparation.md)
+- [01 Getting Started (Week 4)](https://github.com/jayinvers/IT709/blob/main/Tutorials/01_getting_started.md)
+- [02 Front-end App with React and Ant Design Pro(Week 4)](Tutorials/02_frontend_with_react_antd_pro.md)
+- [03 Foreground App with .Net 6.0 MVC architecture and Sql Server/Sqlite(Week 5)](Tutorials/03_foreground_app_with_net_6_mvc_architecture_and_sql_server_sqlite.md)
+- [04 Foreground app with .NET 6.0 MVC architecture (part 2) - Router and EF core (Week 6)](Tutorials/04_foreground_app_with_net_6_mvc_architecture_router_ef_core.md)
+- [05 Foreground app with .NET 6.0 MVC architecture (part 3) - Form and admin panel (Week 6)](Tutorials/05_foreground_app_with_net_6_mvc_architecture_form.md)
+- [06 Foreground app with .NET 6.0 MVC architecture (part 4) Code Refactor (Week 7)](Tutorials/06_foreground_app_with_net_6_mvc_architecture_code_refactor.md)
