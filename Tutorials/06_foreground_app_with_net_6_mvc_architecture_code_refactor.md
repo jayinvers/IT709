@@ -23,7 +23,7 @@ We plan to design two tabs to identify messages before and after processing. All
 
 ![prototype of messages](../pic/06_code_refactoring_pagination/01-prototype-message-admin-panel.png)
 
-## 4. Fake data generatior
+## 4. Fake data generator
 
 - open Manage NuGet Packages for Solution
   ![Manage NuGet Packages](../pic/06_code_refactoring_pagination/02-manage-nuget-packages.png)
@@ -31,56 +31,65 @@ We plan to design two tabs to identify messages before and after processing. All
 - Install **Bogus** NuGet Packages
   ![install bogus](../pic/06_code_refactoring_pagination/03-install-bogus.png)
 
-```cs{1,3,8-12}
-#nullable disable
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using MyWebSite.Data;
-using MyWebSite.Models;
+- Add a method to your SeedData.cs
 
-namespace MyWebSite.Controllers
+  ```cs
+  private static List<Message> FakeMessages(int count)
+  {
+      
+      var messageFaker = new Faker<Message>()
+          .RuleFor(m => m.Email, f => f.Person.Email)
+          .RuleFor(m => m.FullName, f => f.Person.FullName)
+          .RuleFor(m => m.Body, f => f.Lorem.Paragraph())
+          .RuleFor(m => m.CreatedAt, f => f.Date.Past());
+      return messageFaker.Generate(count);
+
+  }
+  ```
+
+  In this code, we initial a new *Faker*, and specify rules for each property of Message.
+
+  messageFaker.Generate(**count**) will returns a **List** containing the number **count** of Message objects.
+  
+- Do not forget to add IMPORT sentence.
+
+  ```cs
+  using Bogus;
+  ```
+
+- Add following code to *Initialize()*
+
+  ```cs
+  if (!context.Message.Any())
+    context.Message.AddRange(FakeMessages(100));
+  ```
+
+- More information about Bogus https://github.com/bchavez/Bogus
+
+## 5. Coding with pagination
+
+```cs
+// GET: Admin/Messages
+public async Task<IActionResult> Messages(int page=1)
 {
-   /* [Route("/admin/[controller]/[action]")] */
-    public class AdminController : Controller
-    {
-        private readonly MyWebSiteContext _context;
+    int pageIndex = page;
+    int pageSize = 10;
 
-        public AdminController(MyWebSiteContext context)
-        {
-            _context = context;
-        }
+    IQueryable<Message> messageIQ = from m in _context.Message select m;
+    messageIQ = messageIQ.OrderByDescending(m => m.CreatedAt);
 
-        // GET: Admin/Messages
-        public async Task<IActionResult> Messages(int page=1)
-        {
-            int pageIndex = page;
-            int pageSize = 10;
+    int count = await messageIQ.CountAsync();
+    int totalPages = (int)Math.Ceiling(count / (double)pageSize);
 
-            IQueryable<Message> messageIQ = from m in _context.Message select m;
-            messageIQ = messageIQ.OrderByDescending(m => m.CreatedAt);
+    messageIQ = messageIQ.Skip((pageIndex-1)*pageSize).Take(pageSize);
 
-            int count = await messageIQ.CountAsync();
-            int totalPages = (int)Math.Ceiling(count / (double)pageSize);
+    ViewData["PaginationTotalPage"] = totalPages;
+    ViewData["PaginationIndex"] = pageIndex;
 
-            messageIQ = messageIQ.Skip((pageIndex-1)*pageSize).Take(pageSize);
-
-            ViewData["PaginationTotalPage"] = totalPages;
-            ViewData["PaginationIndex"] = pageIndex;
-
-            return View(await messageIQ.AsNoTracking().ToListAsync());
-        }
-
-    }
+    return View(await messageIQ.AsNoTracking().ToListAsync()
 }
 
 ```
-
-## 5. Coding with pagination
 
 ## 6. Code Refactor
 

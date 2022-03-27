@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+# IT709 Web Application
 
 You can use the [editor on GitHub](https://github.com/jayinvers/IT709/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
 
