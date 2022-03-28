@@ -1,8 +1,7 @@
 ---
 layout: default
-title: IT709
+title: IT709 Web Application
 ---
-# IT709 Web Application
 
 ## Course Information
 
