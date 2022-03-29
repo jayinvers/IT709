@@ -4,7 +4,7 @@ This project is a tutorial designed for course IT709.
 
 ## Course Information
 
-- [Time Schedule](TIMESCHEDULE.md)
+- [Time Schedule](docs/TIMESCHEDULE.md)
 
 ## Work Sheets
 
