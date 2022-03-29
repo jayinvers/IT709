@@ -163,7 +163,7 @@ Next, we are going to work on the view file.
 
 open the file Views/Admin/Messages.cshtml
 
-```cshtml
+```aspx-cs
 <div class="row justify-content-md-center lh-base">
     <div class="col-11">
         <nav aria-label="Page navigation">
