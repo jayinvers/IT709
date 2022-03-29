@@ -7,7 +7,13 @@ header{
     float:none;
     width: 860px;
     position: relative;
+
+    h1{
+        text-align: center;
+        border-bottom: 1px solid #7e7e7e;
+    }
 }
+
 footer{
     float: none;
     position: inherit;
