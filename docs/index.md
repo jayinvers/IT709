@@ -1,8 +1,3 @@
----
-layout: default
-title: IT709 Web Application
----
-
 ## Course Information
 
 - [IT709 Course Time Schedule](TIMESCHEDULE.md)
