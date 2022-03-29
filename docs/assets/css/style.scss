@@ -1,0 +1,15 @@
+---
+---
+
+@import  " {{ site.theme }} " ;
+
+header{
+    float:none;
+    width: 860;
+    position: relative;
+}
+footer{
+    float: none;
+    position: inherit;
+    width: 860;
+}
