@@ -224,6 +224,15 @@ open the file Views/Admin/Messages.cshtml
 
 ## 6. Code Refactor
 
+Code refactoring is essential for every developer. It helps us reconsider the requirement so as to build a robust system, and also gives us a chance to review whether the code could be reused or not.
+In this step, we are going to review our requirement, and plan to create common libraries or modules for other classes or programs.
+
+Please pay attention to the navigation bar, where lies three items: experience, portfolio and articles.  The pages linked by them contain a list under which a **pagination control** is required. Further, we can imagine that we have the same needs in other similar projects.
+
+![rethink requirement](../pic/06_code_refactoring_pagination/07-rethink-requirement.png)
+
+- New Requirement: **Make a reusable pagination**
+
 Creat new model for pagination
 
 Models/PagedList.cs
@@ -260,9 +269,163 @@ public class PagedList<T> : List<T>
     }
 
 }
-
 ```
+
+Moreover, We need a partial page for **view** part.
+
+Views/Shared/_paging.cshtml
+
+```html
+<div class="row justify-content-md-center lh-base">
+    <div class="col-11">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+
+                @if (Model.HasPreviousPage)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="?page=@(Model.PageIndex-1)" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item disabled">
+                        <a class="page-link">&laquo;</a>
+                    </li>
+                }
+
+                </li>
+                @for (var i = 1; i < Model.TotalPages + 1; i++)
+                {
+                    if (Model.PageIndex == i)
+                    {
+                        <li class="page-item active" aria-current="page">
+                            <a class="page-link" href="#">@i</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item"><a class="page-link" href="?page=@i">@i</a></li>
+                    }
+
+                }
+
+                @if (Model.HasNextPage)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="page=@(Model.PageIndex+1)" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item disabled">
+                        <a class="page-link">&raquo;</a>
+                    </li>
+                }
+
+            </ul>
+        </nav>
+    </div>
+
+</div>
+```
+
+Next, we need to use them in the controller.
+
+For example:
+
+Controllers/ArticlesController.cs
+
+```cs
+// GET: Articles
+public async Task<IActionResult> Index(int page=1)
+{
+    int pageSize = 5;
+    IQueryable<Article> articleIQ = from m in _context.Article select m;
+    articleIQ = articleIQ.OrderByDescending(m => m.Id);
+
+    PagedList<Article> articles = await PagedList<Article>.CreateAsync(articleIQ, page, pageSize);
+
+    return View(articles);
+}
+```
+
+And use the Partial tag in View
+
+Views/Articles/index.cshtml
+
+```html
+<partial name="_Paging" />
+```
+
+We can do more, separate it from the project and prepare it for other projects.
+
+- Create a new project in the solution
+
+  Right-Click **Solution** -> **Add** -> **New Project**
+
+  ![new project](../pic/06_code_refactoring_pagination/08-new-project.png)
+
+- choose **Class Library**
+  
+  ![Class Library](../pic/06_code_refactoring_pagination/09-net-class-library.png)
+
+- And give a name(any name you want)
+  
+  ![configure project](../pic/06_code_refactoring_pagination/10-configure-project.png)
+
+- Choose the framework version => **.NET 6.0(Long-term support)** and **Create**
+
+- Rename Class1.cs to PagedList.cs
+
+- Copy PagedList.cs from project **MyWebSite** to **MaxPagedList**
+
+![copy-to-new-project](../pic/06_code_refactoring_pagination/11-copy-to-new-project.png)
+
+- Install EF Core to new project by using NuGet
+  
+![Install EF Core to new project](../pic/06_code_refactoring_pagination/12-install-ef-core.png)
+
+So far, we have build a new lib, and it is ready to use in other projects.
+
+- Right-Click **MyWebSite**
+  
+![project refer](../pic/06_code_refactoring_pagination/12-project-refer.png)
+
+- Click checkbox of the project name
+
+- Now we can use MaxPagedList.PagedList Class for new project
 
 ## 7. Make your frist NuGet package
 
+- Configure your NuGet package, and **Pack**
+
+- publish your NuGet to NuGet Server
+  
+  dotnet nuget push MaxPagedList.1.0.0.nupkg --api-key [your api key] --source https://repository.jayliu.co.nz/repository/nuget-hosted
+
 ## 8. conclusion
+
+Our project is almost complete and it's time for a conclusion. We built a website project, which is a Foreground application based on the MVC architecture, using the following key points:
+
+- Database connection method
+- Model
+- Controller
+- Routing
+- How to write cshtml and Partial
+- Scaffolding generation
+- SeedData and Fake data filling
+- Pagination and code separation
+- Linq and SQL
+- NuGet package creation and publication
+- Bootstrap (layout, m, p, grid, flex, icon)
+
+What we still need to do:
+
+- Create admin panel
+- Authorization and Authentication
+- Create a program template to prepare for the next project

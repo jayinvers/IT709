@@ -2,6 +2,8 @@
 
 This project is a tutorial designed for course IT709.
 
+Website: [https//www.709.co.nz](https//www.709.co.nz)
+
 ## Course Information
 
 - [Time Schedule](docs/TIMESCHEDULE.md)
@@ -15,5 +17,6 @@ This project is a tutorial designed for course IT709.
 - [04 Foreground app with .NET 6.0 MVC architecture (part 2) - Router and EF core (Week 6)](docs/Tutorials/04_foreground_app_with_net_6_mvc_architecture_router_ef_core.md)
 - [05 Foreground app with .NET 6.0 MVC architecture (part 3) - Form and admin panel (Week 6)](docs/Tutorials/05_foreground_app_with_net_6_mvc_architecture_form.md)
 - [06 Foreground app with .NET 6.0 MVC architecture (part 4) Code Refactor (Week 7)](docs/Tutorials/06_foreground_app_with_net_6_mvc_architecture_code_refactor.md)
+  
 - 07 Work on Server-side API with .Net 6(Week 8)
 - 08 Design the admin pannel and connect to Web service(Week 8)
