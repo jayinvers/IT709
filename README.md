@@ -2,7 +2,7 @@
 
 This project is a tutorial designed for course IT709.
 
-Website: [https//www.709.co.nz](https//www.709.co.nz)
+Website: [https://www.709.co.nz](https://www.709.co.nz)
 
 ## Course Information
 
