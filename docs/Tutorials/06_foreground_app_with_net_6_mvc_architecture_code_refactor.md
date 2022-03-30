@@ -408,6 +408,13 @@ So far, we have build a new lib, and it is ready to use in other projects.
   
   dotnet nuget push MaxPagedList.1.0.0.nupkg --api-key [your api key] --source https://repository.jayliu.co.nz/repository/nuget-hosted
 
+### Try it yourself
+
+- Deploy to Docker container.
+- Modify all listing pages and add pagination.
+- Create a SinglePage Model so as to let users can customize the content of each page, such as About.
+- Try to create an Admin panel without permissions and authentication, and he can modify the contents of the front desk. And think about its solution directory structure.
+
 ## 8. conclusion
 
 Our project is almost complete and it's time for a conclusion. We built a website project, which is a Foreground application based on the MVC architecture, using the following key points:
@@ -423,9 +430,15 @@ Our project is almost complete and it's time for a conclusion. We built a websit
 - Linq and SQL
 - NuGet package creation and publication
 - Bootstrap (layout, m, p, grid, flex, icon)
+- Deploy with Docker
 
 What we still need to do:
 
 - Create admin panel
 - Authorization and Authentication
 - Create a program template to prepare for the next project
+
+## 9. Future works
+
+- Consider how you could adapt this project as a template for rapid development, such as a new, different style resume website in under 4 hours.
+- Consider how you can change page template layout and content without recompiling.
