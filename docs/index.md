@@ -22,7 +22,7 @@ Website: [https://www.709.co.nz](https://www.709.co.nz)
 - [04 Foreground app with .NET 6.0 MVC architecture (part 2) - Router and EF core (Week 6)](Tutorials/04_foreground_app_with_net_6_mvc_architecture_router_ef_core.md)
 - [05 Foreground app with .NET 6.0 MVC architecture (part 3) - Form and admin panel (Week 6)](Tutorials/05_foreground_app_with_net_6_mvc_architecture_form.md)
 - [06 Foreground app with .NET 6.0 MVC architecture (part 4) Code Refactor (Week 7)](Tutorials/06_foreground_app_with_net_6_mvc_architecture_code_refactor.md)
-- [07 Foreground app with .NET 6.0 MVC architecture (part 5) Focus on the templates (Week 8)](Tutorials/06_foreground_app_with_net_6_mvc_architecture_code_refactor.md)
+- [07 Foreground app with .NET 6.0 MVC architecture (part 5) Focus on the templates (Week 8)](Tutorials/07_foreground_app_with_net_6_mvc_architecture_focus_on_the_templates.md)
 
 ### Deployment
 
