@@ -84,13 +84,16 @@ In this section we will show how to host a static website(based on HTML) on an I
 ## 3. Deploy a dynamic web application with Nginx in Linux(Ubuntu 20.04)
 
 - install dotnet 6 sdk on ubuntu
-  https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004-
-- copy the file to server(by using FTP tools) 
+  <https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004->
+- copy the file to server(by using FTP tools)
 
 - Run the command
 
 ```bash
 dotnet mywebsite.dll
+
+# to use different port numbers
+dotnet xxx.dll --urls http://*:8001
 ``` 
 
 ## 4. Build a web application with Docker Desktop on Windows
