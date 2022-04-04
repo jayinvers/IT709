@@ -1,5 +1,15 @@
 # 08 Fundamental of Deployment
 
+## Tables of content
+
+1. Deploy a static website with windows IIS
+2. Deploy a dynamic web application with IIS(.Net 6)
+3. Deploy a dynamic web application with Nginx in Linux(Ubuntu 20.04)
+4. Build a web application with Docker Desktop on Windows
+5. Publish  a Docker image to Docker Hub
+6. Deploy .Net 6 application  to a private linux server with Docker
+7. Deploy .Net 6 application to Azure Cloud with Docker
+
 ## 1. Deploy a static website with windows IIS
 
 In this section we will show how to host a static website(based on HTML) on an IIS server.
