@@ -1,4 +1,4 @@
-# .NET 6.0 MVC architecture Identity
+# .NET 6.0 MVC architecture authentication and authorization with Identity
 
 ## 1.0 Introduction .NET 6.0 MVC architecture
 

@@ -27,7 +27,8 @@ Website: [https://www.709.co.nz](https://www.709.co.nz)
 ### Deployment
 
 - [08 Fundamental of Deployment (Week 8)](Tutorials/08_fundamental_of_deployment.md)
-- 09 CI(Continuous Integration) & CD(Continuous Delivery) (Week 9)
+- [09 .NET 6.0 MVC architecture authentication and authorization with Identity (Week 9)](Tutorials/09_net_mvc_indentity.md)
+- [10 CI(Continuous Integration) & CD(Continuous Delivery) (Week 9)]
 
 ### Advanced .Net 6 MVC Application
 
