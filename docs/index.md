@@ -27,9 +27,9 @@ Website: [https://www.709.co.nz](https://www.709.co.nz)
 ### Deployment
 
 - [08 Fundamental of Deployment (Week 8)](Tutorials/08_fundamental_of_deployment.md)
-- 09 CI(Continuous Integration) & CD(Continuous Delivery) (Week 9)
+- [09 CI(Continuous Integration) & CD(Continuous Delivery) (Week 10)](Tutorials/11_cd_ci_deployment.md)
 
 ### Advanced .Net 6 MVC Application
 
-- 10 Work on Server-side API with .Net 6 (Week 9)
-- 11 Design the admin pannel and connect to Web service (Week 10)
+- 10 Work on Server-side API with .Net 6 (Week 12)
+- 11 Design the admin pannel and connect to Web service (Week 11)
