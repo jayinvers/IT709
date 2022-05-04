@@ -4,7 +4,7 @@
 
 When software is developed in a team, conflicts often arise due to many people contributing code to the same project. Therefore, the development and release of Internet software has formed a set of standard processes, and the most important component is continuous integration (CI).
 
-![CI](docs/pic/10_cd_ci/00.png)
+![CI](pic/10_cd_ci/00.png)
 
 Today we will introduce the concepts of continuous integration and continuous delivery, and how they are implemented in **Github** and **Teamcity**.
 
@@ -30,7 +30,7 @@ Today we will introduce the concepts of continuous integration and continuous de
 
 ## Deploy a .NET Web Application with TeamCity
 
-![.Net Web App on Linux](docs/pic/10_cd_ci/02.png)
+![.Net Web App on Linux](pic/10_cd_ci/02.png)
 
 ### TASKs
 
