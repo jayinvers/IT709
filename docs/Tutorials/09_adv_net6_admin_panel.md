@@ -2,7 +2,10 @@
 
 ## Intro
 
-In a web project, it is usually the admin panel that takes up the most development time. It usually contains some complex database query tasks, such as reports, product details modification. So, be sure to consider the database structure before designing it. Also, how to organize the project structure becomes important as we are faced with multiple levels of directory structure such as forground, admin panel and API.
+In a web project, it is usually the admin panel that takes up the most development time. It contains many complex database query tasks, such as reports, product details modification. So, be sure to consider the database structure before designing it.
+
+How to organize the project structure becomes important as we are faced with multiple levels of directory structure such as forground, admin panel and API.
+
 So, today we're going to discuss how to design a working backend for your Project 2.
 
 ## Objectives
