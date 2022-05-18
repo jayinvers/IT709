@@ -3,9 +3,12 @@
 
 @import  " {{ site.theme }} " ;
 
+body{
+    font-size: 18px;
+}
 header{
     float:none;
-    width: 860px;
+    width: 100%;
     position: relative;
 
     h1{
@@ -18,9 +21,10 @@ header{
 footer{
     float: none;
     position: inherit;
-    width: 860px;
+    width: 100%;
 }
 section{
     float: none;
-    width: 860px;
+    width: 100%;
+    min-width: 400px;
 }
