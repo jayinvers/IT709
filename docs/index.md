@@ -33,4 +33,4 @@ Website: [https://www.709.co.nz](https://www.709.co.nz)
 
 - [10 .NET 6.0 MVC architecture authentication and authorization with Identity (Week 9)](Tutorials/09_net_mvc_indentity.md)
 - [11.Net 6 Advanced - Designing and Implementing an Admin Panel (Week 11)](Tutorials/09_adv_net6_admin_panel.md)
-- [12 Work on Server-side API with .Net 6 (Week 12)](Tutorials/13_web_api_app_1.md)
+- [12 Work on Server-side API with .Net 6 (Week 12)](Tutorials/13_web_api_app.md)
