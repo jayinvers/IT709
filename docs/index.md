@@ -8,7 +8,7 @@ Website: [https://www.709.co.nz](https://www.709.co.nz)
 
 - [Time Schedule](TIMESCHEDULE.md)
 
-## Work Sheets
+## Tutorials
 
 ### Html, CSS and JavaScript Intro
 
@@ -36,3 +36,22 @@ Website: [https://www.709.co.nz](https://www.709.co.nz)
 - [12 Work on Server-side API with .Net 6 (Week 12)](Tutorials/13_web_api_app.md)
 - [13 Work on Server-side API with .Net 6 JWT](Tutorials/14_web_api_app_2.md)
 - [14 Dive into Identity - User Reg & Login with mutiple Roles](Tutorials/15_dive_into_identity.md)
+
+## Example Codes of tutorials
+
+- <https://github.com/jayinvers/MyWebSite>
+  
+  the example code for IT709 Project 1
+
+- <https://github.com/jayinvers/Starter>
+  
+  Starter is a new project template for ASP.NET 6, it includes Admin Panel, API, User Management, Role Management, Cart and a Shop Foreground. In addition, it has sample code, including a user management using Identity, an admin panel, and examples of one-to-many Entity Model relationship.
+
+- <https://github.com/jayinvers/MyOnlineBookShop>
+
+  The example code for Web API Application with .net 6
+
+- <https://github.com/jayinvers/MyBookShop>
+  
+  An example of online book store based on asp.net 6 **MVC**
+
