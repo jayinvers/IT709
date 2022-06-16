@@ -90,7 +90,7 @@ builder.Services.Configure<IdentityOptions>(options =>
 ```cs
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.Cookie.Name = "Starter";
+    options.Cookie.Name = "MyBookShop";
     options.AccessDeniedPath = "/AccessDenied";
     options.LoginPath = "/login";
 });
@@ -353,10 +353,10 @@ Create a new folder **Auth** under Views
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
-using Starter.Data;
-using Starter.Models;
+using MyBookShop.Data;
+using MyBookShop.Models.Entities;
 
-namespace Starter
+namespace MyBookShop
 {
     public static class SeedData
     {
@@ -421,7 +421,7 @@ if (app.Environment.IsDevelopment())
     using (var scope = app.Services.CreateScope())
     {
         var services = scope.ServiceProvider;
-        Starter.SeedData.Initialize(services).Wait();
+        MyBookShop.SeedData.Initialize(services).Wait();
     }
 }
 ```
